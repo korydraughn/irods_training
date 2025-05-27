@@ -425,13 +425,19 @@ Let's create the database to be used by iRODS:
 Create the PostgreSQL user account to be used by iRODS:
 
 \begin{lstlisting}[language=sql]
-  > CREATE USER irods WITH PASSWORD @\char"0D@testpassword@\char"0D@;
+> CREATE USER irods WITH PASSWORD @\char"0D@testpassword@\char"0D@;
 \end{lstlisting}
 
 Give the iRODS PostgreSQL user account permission to use the database:
 
 \begin{lstlisting}[language=sql]
 > GRANT ALL PRIVILEGES ON DATABASE "ICAT" to irods;
+\end{lstlisting}
+
+If using PostgreSQL 15.0+, set the owner of the database:
+
+\begin{lstlisting}[language=sql]
+> ALTER DATABASE "ICAT" OWNER TO irods;
 \end{lstlisting}
 
 Log out of the PostgreSQL command console:
