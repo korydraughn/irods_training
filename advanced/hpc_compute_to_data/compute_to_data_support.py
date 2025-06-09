@@ -68,7 +68,7 @@ def this_host_tied_to_resc_R( args, callback, rei ): # test rule
 
 def this_host_tied_to_resc(callback, resc ):
     import socket
-    this_host = socket.gethostname()
+    this_host = socket.getfqdn()
     tied_host = ""
     for rescvault in row_iterator( 'RESC_LOC',"RESC_NAME = '{resc}'".format(**locals()), AS_DICT,callback):
         tied_host = rescvault['RESC_LOC']
